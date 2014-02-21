@@ -8,8 +8,6 @@ Introduction
 
 I have a large amount of personal content at home collected from various sources and there is a organize, quantify and sort my content.  Searching click by click on 20 TB of disk at home makes for tedious time and certainly result in content being "lost" but really not so. In the times of bill per bit and no unlimited downloading it is good to know you already have a 1 Gig movie already.
 
----------
-
 
 The problem....
 ==
@@ -22,13 +20,11 @@ This means filling disk after disk, burning to CD's etc which after a while beco
 The Solution: NAS drives; yes, I could place them in some PC tower and use that as a media server (in some ways I do but using NFS).  The NAS drives are more practical when I want more drives I add them to the network and boom another 8 TB added on for less than 700 bucks.
 
 Now to the real problem. As you add disk you end up with "Doctor Who" spread across many different drives and different NAS. 
-___________________
-
-
 
 Perl to the Rescue...
 ===
 
+How to build the data? What format, what database, why a tradition database?
 
 The Data
 ===
