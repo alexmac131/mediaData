@@ -1,16 +1,20 @@
+jQuery Media Data and Searching
 =
-Concepts in Browser Data and Searching
-==
+
+
 Introduction
+==
 -------
 
 I have a large amount of personal content at home collected from various sources and there is a organize, quantify and sort my content.  Searching click by click on 20 TB of disk at home makes for tedious time and certainly result in content being "lost" but really not so. In the times of bill per bit and no unlimited downloading it is good to know you already have a 1 Gig movie already.
 ---------
 
-===
-The problem....
 
-When you are a hordder of data, logs, code, content, music, video and anything else you manage over time to collect a lot of stuff. Some of it junk.  Though I am practical hordder in that I don't want repeats of say "star trek original Series 1 Episode 1".  
+The problem....
+==
+
+
+When you are a horder of data, logs, code, content, music, video and anything else you manage over time to collect a lot of stuff. Some of it junk.  Though I am practical horder in that I don't want repeats of say "star trek original Series 1 Episode 1".  
 
 This means filling disk after disk, burning to CD's etc which after a while becomes not very practical.  When the urge arrives to watch Gun smoke, I want to click click and start watching a show I have not watched since I was a kid.
 
@@ -20,13 +24,13 @@ Now to the real problem. As you add disk you end up with "Doctor Who" spread acr
 ___________________
 
 
-==
-Perl to the Rescue
-...
+
+Perl to the Rescue...
+===
 
 
-==
 The Data
+===
 	
 	sample:
 
