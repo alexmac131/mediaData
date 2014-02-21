@@ -1,30 +1,28 @@
 #match {
-	position:fixed;
+	background-color:#ff8c00;
+	border:solid;
+	left:314;
 	padding-left:8;
 	padding-right:8;
+	position:fixed;
 	top:52;
-	left:314;
-	border:solid;
-	background-color:#ff8c00;
 	z-index:3;
 
 }
 #search {
+	border:3px solid #033333;
 	font-size:1.35em;
-	top:50;
 	left:20;
 	position:fixed;
-	border:3px solid #033333;
+	top:50;
 	z-index:3;
 }
 
-
-
 #titles {
-	font-size:.4em;
-	float:right;
-	padding-right:15%;
 	color:navy;
+	float:right;
+	font-size:.4em;
+	padding-right:15%;
 }
 
 body {
@@ -32,56 +30,55 @@ body {
 }
 
 #message {
- 	position:fixed;
-	left:4%;
-	top:9%;
-	height:85%;
-	width:91%;
 	background-color:#F4F4F4;
-	z-index:6;
-	border:solid;
 	border-size:2;
+	border:solid;
+	height:85%;
+	left:4%;
 	overflow:scroll;
-    	border-radius:2%;
 	text-align:justify;
+	top:9%;
+	width:91%;
+	z-index:6;
+ 	position:fixed;
+    border-radius:2%;
 }
 
 p {
 	padding:5;
-
 }
+
 #head {
 	background-color:#ff8c00;
 	padding:9;
 	font-size:1.4em;
 	text-align:center;
-
 }
 
 #closeMessage {
-	position:fixed;
-  	cursor:pointer;
-	right:5%;
-	top:10%;
 	background-color:#DCDCDC;
-  	margin-top:1;
-  	margin-right:3;
-  	padding:0;
-	padding-bottom:6;
-	width:20;
-	height:20;
-	text-align:center;
-	z-index:6;
 	border:solid;
-    	border-radius:33%;
+	height:20;
+	padding-bottom:6;
+	position:fixed;
+	right:5%;
+	text-align:center;
+	top:10%;
+	width:20;
+	z-index:6;
+  	cursor:pointer;
+  	margin-right:3;
+  	margin-top:1;
+  	padding:0;
+    border-radius:33%;
 }
+
 #closeX {
 	padding-bottom:3px;
 	border:none;
-    	border-radius:33%;
+    border-radius:33%;
 	font-size:1.1em;
 }
-
 
 img.info {
 	cursor:pointer;
@@ -109,34 +106,25 @@ img.help {
 	color:#FF3300;
 }
 
-#head  {
-}
-
-
-
-
-
-
-
 #ui-id-1,span  {
+	float:left;
 	font-size:1px;
-	z-index:-1;
+	height:1%;
 	max-height:1;
 	max-width:1;
-	visibility:hidden;
 	overflow:hidden;
-	top:99%;
-	width:1%;
-	height:1%;
 	text-decoration:none;
-	float:left;
-     	position:fixed;
+	top:99%;
+	visibility:hidden;
+	width:1%;
+	z-index:-1;
+    position:fixed;
 
 }
 #aaa {
 	color:navy;
-
 }
+
 #data {
 	width:40%;
 	height:65;
@@ -146,8 +134,8 @@ img.help {
 	padding:30;
 	font-size:.8em;
 	visibility:hidden;
-
 }
+
 #nametitle {
 	left:1;
 	top:1;
@@ -199,15 +187,14 @@ img.help {
 	padding-right:3;
 }
 #showlist {
-	margin-top:50;
-	visibility:hidden;
-	padding-left:20;
-       	left:5%;
-       	top:25%;
-	text:1.2em;
-	z-index:5;
-	overflow:scroll;
-	font-size:1.1em;
 	color:navy;
-    	border-radius:2%;
+	font-size:1.1em;
+	margin-top:50;
+	overflow:scroll;
+	padding-left:20;
+	visibility:hidden;
+	z-index:5;
+    border-radius:2%;
+    left:5%;
+    top:25%;
 }
