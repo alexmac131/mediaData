@@ -24,7 +24,9 @@ Now to the real problem. As you add disk you end up with "Doctor Who" spread acr
 Perl to the Rescue...
 ===
 
-How to build the data? What format, what database, why a tradition database?
+How to build the data? What format, what database, why a tradition database? How do I get the data across for so many drives? So many questions and these were not the only questions I had to ask myself.
+
+
 
 The Data
 ===
