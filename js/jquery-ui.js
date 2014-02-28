@@ -7011,7 +7011,6 @@ $.widget( "ui.autocomplete", {
 		this.pending++;
 		this.element.addClass( "ui-autocomplete-loading" );
 		this.cancelSearch = false;
-
 		this.source( { term: value }, this._response() );
 	},
 
@@ -11579,8 +11578,7 @@ $.widget( "ui.menu", {
 
 	_keydown: function( event ) {
 		/*jshint maxcomplexity:20*/
-		var match, prev, character, skip, regex,
-			preventDefault = true;
+		var match, prev, character, skip, regex, preventDefault = true;
 
 		function escape( value ) {
 			return value.replace( /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&" );
