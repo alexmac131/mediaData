@@ -158,14 +158,14 @@ img.help {
 
 #season {
 	top:0;
-	right:150;
+	right:88;
 	padding-right:3px;
 	padding-left:3px;
 	position:absolute;
 }
 #ep {
 	top:0;
-	right:67;
+	right:0;
 	padding-right:3px;
 	padding-left:3px;
 	position:absolute;
@@ -179,12 +179,6 @@ img.help {
 	bottom:1;
 	left:48%;
 	position:absolute;
-}
-#size{
-	top:1;
-	right:1;
-	position:absolute;
-	padding-right:3;
 }
 #showlist {
 	color:navy;
