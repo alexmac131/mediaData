@@ -25,7 +25,7 @@ $(function() {
 	var dataset = new Array ();
 	for (var i = 0; i < masterMovie.length; i++){ 
 		var master =  masterMovie[i].id;		
-		jQuery.data( document.body,String(master),masterMovie[i]);
+		$.data( document.body,String(master),masterMovie[i]);
 		dataset.push( { "id" :masterMovie[i].id , "label" : masterMovie[i].filename });		
     }
 
@@ -34,19 +34,19 @@ $(function() {
 
 	$.widget( "custom.catcomplete", $.ui.autocomplete, {
  		_renderMenu: function( ul, items ) {
-		$("#showlist").empty().show();;		
+		$("#showlist").empty().show();	
 		items.sort(compare);
 
 		var count = 1;
       	$.each( items, function( index, item ) {
 
 			//var idset = "m" + item.id ;
-			var textString = jQuery.data( document.body, String(item.id)).filename ;
+			var textString = $.data( document.body, String(item.id)).filename ;
 			
 			cloned = $("#data").clone().show();
 			cloned.attr(
 				'id',
-				jQuery.data( document.body, String(item.id)).id
+				$.data( document.body, String(item.id)).id
 				).css(cssSet);
 			
 			if (count % 2) {
@@ -56,20 +56,20 @@ $(function() {
 				cloned.css("background-color","#EDEDED");
 			}
 			cloneyear = $("#year").clone();  // done
-			if (jQuery.data( document.body, String(item.id)).year != "null") {
-				cloneyear.html(jQuery.data( document.body, String(item.id)).year);
+			if ($.data( document.body, String(item.id)).year != "null") {
+				cloneyear.html($.data( document.body, String(item.id)).year);
 			}
 			clonenas = $("#nas").clone();  // done
-			clonenas.html("nas drive:" + jQuery.data( document.body, String(item.id)).nasdrive);
+			clonenas.html("nas drive:" + $.data( document.body, String(item.id)).nasdrive);
 			cloneep = $("#ep").clone();  // cloneep
 			cloneseries = $("#season").clone();  //done
-			if (jQuery.data( document.body, String(item.id)).espisode != "null" 
-				&&  jQuery.data( document.body, String(item.id)).series <= 50) {
-					cloneep.html("Episode " + jQuery.data( document.body, String(item.id)).espisode);
-					cloneseries.html("Season " + jQuery.data( document.body, String(item.id)).series);
+			if ($.data( document.body, String(item.id)).espisode != "null" 
+				&&  $.data( document.body, String(item.id)).series <= 50) {
+					cloneep.html("Episode " + $.data( document.body, String(item.id)).espisode);
+					cloneseries.html("Season " + $.data( document.body, String(item.id)).series);
 			}
 			clonemediaShowType = $("#mediaShowType").clone();  //done
-			clonemediaShowType.html(jQuery.data( document.body, String(item.id)).mediaType);
+			clonemediaShowType.html($.data( document.body, String(item.id)).mediaType);
 			clonegenre = $("#genre").clone();  // done
 			cloneName = $("#nametitle").clone();  //done
 			cloneName.html(textString);
@@ -86,21 +86,20 @@ $(function() {
 	$( "#search" ).catcomplete({
 		minLength:minSet,
 	    source: dataset,
+	    delay: 350,
 		response: function( event, ui ) {
 			if (ui.content.length == 0) {
-				console.log("zero");
 				$("#showlist").empty().hide();		
 			}
 			$("#match").text(ui.content.length).show();
-	     } 
+	     }, 
 	});
 
 	$("#search").on('keydown', function() {
 	 	var key = event.keyCode || event.charCode;
-		if( key == 8 || key == 46 ) {
-	        var sizenow = $("#search").val().length;
-	        console.log(sizenow);
-			if (($("#search").val().length) <= 1) {			
+	 	if( key == 8 || key == 46 ) {
+	        //var sizenow = $("#search").val().length;
+	        if (($("#search").val().length) <= 1) {			
 				$("#showlist").empty().hide();
 				$("#match").hide();
 			}
