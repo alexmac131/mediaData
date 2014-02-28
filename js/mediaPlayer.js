@@ -35,19 +35,15 @@ $(function() {
 	$.widget( "custom.catcomplete", $.ui.autocomplete, {
  		_renderMenu: function( ul, items ) {
 		$("#showlist").empty().show();	
-		items.sort(compare);
+		//items.sort(compare);
 
 		var count = 1;
       	$.each( items, function( index, item ) {
-
-			//var idset = "m" + item.id ;
 			var textString = $.data( document.body, String(item.id)).filename ;
-			
 			cloned = $("#data").clone().show();
-			cloned.attr(
-				'id',
+			cloned.attr('id',
 				$.data( document.body, String(item.id)).id
-				).css(cssSet);
+			).css(cssSet);
 			
 			if (count % 2) {
 				cloned.css("background-color","#DDDDDD");
@@ -55,6 +51,7 @@ $(function() {
 			else {
 				cloned.css("background-color","#EDEDED");
 			}
+
 			cloneyear = $("#year").clone();  // done
 			if ($.data( document.body, String(item.id)).year != "null") {
 				cloneyear.html($.data( document.body, String(item.id)).year);
@@ -63,11 +60,11 @@ $(function() {
 			clonenas.html("nas drive:" + $.data( document.body, String(item.id)).nasdrive);
 			cloneep = $("#ep").clone();  // cloneep
 			cloneseries = $("#season").clone();  //done
-			if ($.data( document.body, String(item.id)).espisode != "null" 
-				&&  $.data( document.body, String(item.id)).series <= 50) {
+			if ($.data( document.body, String(item.id)).series < 50) {
 					cloneep.html("Episode " + $.data( document.body, String(item.id)).espisode);
 					cloneseries.html("Season " + $.data( document.body, String(item.id)).series);
-			}
+					textString = textString.match(/^.{1,40}/);
+			}	
 			clonemediaShowType = $("#mediaShowType").clone();  //done
 			clonemediaShowType.html($.data( document.body, String(item.id)).mediaType);
 			clonegenre = $("#genre").clone();  // done
@@ -82,23 +79,26 @@ $(function() {
     }
 });
 
-	var minSet = 2;
+	var minSet = 3;
 	$( "#search" ).catcomplete({
 		minLength:minSet,
 	    source: dataset,
-	    delay: 350,
-		response: function( event, ui ) {
+	   	response: function( event, ui ) {
 			if (ui.content.length == 0) {
 				$("#showlist").empty().hide();		
 			}
 			$("#match").text(ui.content.length).show();
+			// when we search and have a subset they are all possible next matches so 
+			// why search all 10,000 when we only need to search say 76.
+			$( "#search" ).catcomplete("option","source",ui.content);
 	     }, 
 	});
 
 	$("#search").on('keydown', function() {
 	 	var key = event.keyCode || event.charCode;
-	 	if( key == 8 || key == 46 ) {
-	        //var sizenow = $("#search").val().length;
+	 	if( key == 8 ) {
+	 		// when we hit the back key we need to refresh to the orginal data source.
+	 		$( "#search" ).catcomplete("option","source",dataset);
 	        if (($("#search").val().length) <= 1) {			
 				$("#showlist").empty().hide();
 				$("#match").hide();
