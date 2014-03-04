@@ -23,19 +23,19 @@ $(function() {
 	
 	var titles = 0;
 	var dataset = new Array ();
+	var master;
 	for (var i = 0; i < masterMovie.length; i++){ 
-		var master =  masterMovie[i].id;		
+		master =  masterMovie[i].id;		
 		$.data( document.body,String(master),masterMovie[i]);
 		dataset.push( { "id" :masterMovie[i].id , "label" : masterMovie[i].filename });		
     }
-
 	titles = masterMovie.length;
 	$("#titles").html(titles + " titles available.");
 
 	$.widget( "custom.catcomplete", $.ui.autocomplete, {
  		_renderMenu: function( ul, items ) {
 		$("#showlist").empty().show();	
-		//items.sort(compare);
+		items.sort(compare);
 
 		var count = 1;
       	$.each( items, function( index, item ) {
@@ -53,18 +53,19 @@ $(function() {
 			}
 
 			cloneyear = $("#year").clone();  // done
-			if ($.data( document.body, String(item.id)).year != "null") {
+			if ($.data( document.body, String(item.id)).year != null) {
 				cloneyear.html($.data( document.body, String(item.id)).year);
 			}
 			clonenas = $("#nas").clone();  // done
 			clonenas.html("nas drive:" + $.data( document.body, String(item.id)).nasdrive);
-			cloneep = $("#ep").clone();  // cloneep
+		    cloneep = $("#ep").clone();  // cloneep
 			cloneseries = $("#season").clone();  //done
-			if ($.data( document.body, String(item.id)).series < 50) {
+		
+			if ($.data( document.body, String(item.id)).espisode != "" 
+				&&  jQuery.data( document.body, String(item.id)).series != "") {
 					cloneep.html("Episode " + $.data( document.body, String(item.id)).espisode);
-					cloneseries.html("Season " + $.data( document.body, String(item.id)).series);
-					textString = textString.match(/^.{1,40}/);
-			}	
+					cloneseries.html("Season " + $.data( document.body, String(item.id)).series);		
+			}
 			clonemediaShowType = $("#mediaShowType").clone();  //done
 			clonemediaShowType.html($.data( document.body, String(item.id)).mediaType);
 			clonegenre = $("#genre").clone();  // done
@@ -91,6 +92,7 @@ $(function() {
 			// when we search and have a subset they are all possible next matches so 
 			// why search all 10,000 when we only need to search say 76.
 			$( "#search" ).catcomplete("option","source",ui.content);
+			
 	     }, 
 	});
 
