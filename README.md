@@ -24,8 +24,11 @@ Now to the real problem. As you add disk you end up with "Doctor Who" spread acr
 Perl to the Rescue...
 ===
 
-How to build the data? What format, what database, why a tradition database? How do I get the data across for so many drives? So many questions and these were not the only questions I had to ask myself.
+How to build the data? What format, what database, why a tradition database? How do I get the data across for so many drives? So many questions and these were not the only questions I had to ask myself.  I needed a quick and effect means to collect large amount of data and write some base reporting data.
 
+In the perl directory you will find [diskmap.pl](https://github.com/alexmac131/mediaData/blob/master/perl/diskmap.pl) which quickly scans across multipul NFS mounted drivdes, collects the data and then posts various raw map data to files, directories, zero files and rejected files that don't meet a specific format.
+
+The next aspect is to take the file data and parse it into something useful where all have is a downloaded file formated by nothing more than a social convention.  Extracting data such as the year it was publish, the series  information etcand in additon filter out all the "graffti" tags uploaders add.
 
 
 The Data
