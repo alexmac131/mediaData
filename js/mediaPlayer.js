@@ -41,6 +41,9 @@ $(function() {
 		//console.log ("starting to render");    
 			
 		//var tau = $.now();
+		var clonedList = $("#showlist").clone();
+		clonedList.empty();
+
 		$("#showList").hide();
 		$.each( items, function( index, item ) {
 			var tea = $.now();
@@ -65,10 +68,13 @@ $(function() {
 					$(cloned[0].children.ep).html ("Episode " + dataUnit.espisode);
 				    $(cloned[0].children.season).html ("Series " +dataUnit.season);
 			}
-			$("#showlist").append(cloned); 
-		});
+			$("#showlist").append(cloned);
+			//clonedList.append(cloned);
 
-        $("#showList").show();
+			
+		});
+		$("#showlist").append(clonedList);
+	    $("#showList").show();
         //console.log ("total time " + ($.now() - tau));  	
     }
 });
@@ -86,7 +92,7 @@ $(function() {
 			// when we search and have a subset they are all possible next matches so 
 			// why search all 10,000 when we only need to search say 76.
 			$( "#search" ).catcomplete("option","source",ui.content);
-			
+		
 	     }, 
 	});
 
