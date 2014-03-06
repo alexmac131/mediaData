@@ -29,54 +29,47 @@ $(function() {
 		$.data( document.body,String(master),masterMovie[i]);
 		dataset.push( { "id" :masterMovie[i].id , "label" : masterMovie[i].filename });		
     }
+    //console.log (dataset);
 	titles = masterMovie.length;
 	$("#titles").html(titles + " titles available.");
 
 	$.widget( "custom.catcomplete", $.ui.autocomplete, {
  		_renderMenu: function( ul, items ) {
-		$("#showlist").empty().show();	
-		items.sort(compare);
+		$("#showlist").empty();	
+		//items.sort(compare);
 
-		var count = 1;
-      	$.each( items, function( index, item ) {
-			var textString = $.data( document.body, String(item.id)).filename ;
-			cloned = $("#data").clone().show();
-			cloned.attr('id',
-				$.data( document.body, String(item.id)).id
-			).css(cssSet);
+		//console.log ("starting to render");    
 			
-			if (count % 2) {
+		//var tau = $.now();
+		$("#showList").hide();
+		$.each( items, function( index, item ) {
+			var tea = $.now();
+		    var dataUnit =  ($.data( document.body, String(item.id)));	
+			var cloned = $("#data").clone();
+			cloned.attr('id',dataUnit.id).css(cssSet);
+			$(cloned[0].children.nas).html (dataUnit.nasdrive);
+			$(cloned[0].children.nametitle).html (dataUnit.filename);
+			$(cloned[0].children.mediaShowType).html (dataUnit.mediaType);
+
+			if (item.id % 2) {
 				cloned.css("background-color","#DDDDDD");
 			}
 			else {
-				cloned.css("background-color","#EDEDED");
+				cloned.css ("background-color","#EDEDED");
 			}
 
-			cloneyear = $("#year").clone();  // done
-			if ($.data( document.body, String(item.id)).year != null) {
-				cloneyear.html($.data( document.body, String(item.id)).year);
+			if (dataUnit.year != null) {
+				$(cloned[0].children.year).html (dataUnit.year);
+			}			
+			if (dataUnit.espisode != "" ) {
+					$(cloned[0].children.ep).html ("Episode " + dataUnit.espisode);
+				    $(cloned[0].children.season).html ("Series " +dataUnit.season);
 			}
-			clonenas = $("#nas").clone();  // done
-			clonenas.html("nas drive:" + $.data( document.body, String(item.id)).nasdrive);
-		    cloneep = $("#ep").clone();  // cloneep
-			cloneseries = $("#season").clone();  //done
-		
-			if ($.data( document.body, String(item.id)).espisode != "" 
-				&&  jQuery.data( document.body, String(item.id)).series != "") {
-					cloneep.html("Episode " + $.data( document.body, String(item.id)).espisode);
-					cloneseries.html("Season " + $.data( document.body, String(item.id)).series);		
-			}
-			clonemediaShowType = $("#mediaShowType").clone();  //done
-			clonemediaShowType.html($.data( document.body, String(item.id)).mediaType);
-			clonegenre = $("#genre").clone();  // done
-			cloneName = $("#nametitle").clone();  //done
-			cloneName.html(textString);
-			cloned.append(cloneyear).append(cloneep);
-			cloned.append(clonegenre).append(clonemediaShowType).append(cloneseries);
-			cloned.append(clonenas).append(cloneName);
 			$("#showlist").append(cloned); 
-			count++;
 		});
+
+        $("#showList").show();
+        //console.log ("total time " + ($.now() - tau));  	
     }
 });
 
@@ -85,6 +78,7 @@ $(function() {
 		minLength:minSet,
 	    source: dataset,
 	   	response: function( event, ui ) {
+	   		//console.log(ui);
 			if (ui.content.length == 0) {
 				$("#showlist").empty().hide();		
 			}
@@ -131,6 +125,7 @@ $.extend( $.ui.autocomplete, {
 	escapeRegex: function( value ) {
 		return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 	},
+
 	filter: function(array, term) {
 		var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );
 		return $.grep( array, function(value) {
