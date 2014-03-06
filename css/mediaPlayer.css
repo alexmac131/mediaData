@@ -44,17 +44,6 @@ body {
     border-radius:2%;
 }
 
-p {
-	padding:5;
-}
-
-#head {
-	background-color:#ff8c00;
-	padding:9;
-	font-size:1.4em;
-	text-align:center;
-}
-
 #closeMessage {
 	background-color:#DCDCDC;
 	border:solid;
@@ -80,22 +69,7 @@ p {
 	font-size:1.1em;
 }
 
-img.info {
-	cursor:pointer;
-	position:fixed;
-	right:45;
-	top:1;
-	float:left;
-	z-index:6;
-}
 
-img.help {
-	cursor:pointer;
-	position:fixed;
-	right:1;
-	top:1;
-	z-index:6;
-}
 
 #mediatop {
 	text-align:left;
@@ -120,9 +94,6 @@ img.help {
 	z-index:-1;
     position:fixed;
 
-}
-#aaa {
-	color:navy;
 }
 
 #data {
