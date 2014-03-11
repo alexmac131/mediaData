@@ -114,9 +114,10 @@ The Regex
 
 Building the output 
 ===
--cloning 
--rendering 
--DNA
+
+- Cloning 
+- Rendering 
+- DNA
 
 What is next?
 ===
