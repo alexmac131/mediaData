@@ -17,8 +17,8 @@ I have a large amount of personal content at home collected from various sources
 
 
 
-The problem....
-==
+The problem
+===
 
 
 When you are a horder of data, logs, code, content, music, video and anything else you manage over time to collect a lot of stuff. Some of it junk.  Though I am practical horder in that I don't want repeats of say "star trek original Series 1 Episode 1".  
@@ -39,7 +39,7 @@ In the perl directory you will find [diskmap.pl](https://github.com/alexmac131/m
 The next aspect is to take the file data and parse it into something useful where all have is a downloaded file formated by nothing more than a social convention.  Extracting data such as the year it was publish, the series  information etcand in additon filter out all the "graffti" tags uploaders add.
 
 
-The [Data](https://github.com/alexmac131/mediaData/blob/master/data/master.json)
+The [Data](https://github.com/alexmac131/mediaData/data/master.json)
 ===
 	
 	sample:
@@ -90,8 +90,8 @@ The [Data](https://github.com/alexmac131/mediaData/blob/master/data/master.json)
       "year" : "2000"
    },
 
-   Loading into JavaScript
-   ====
+Loading into JavaScript
+====
 
    I use a simple method, I write the perl output as a JSON file (see above) and then load it directly via '<script src="data/master.json"></script>'.  The trick I did not show above is I write the file as javascript.
 
@@ -109,3 +109,11 @@ The [Data](https://github.com/alexmac131/mediaData/blob/master/data/master.json)
     
     The variable *dataset* is then used for the regular expression, sorting, etc.
 
+The Regex
+===
+
+Building the output - cloning  / rendering / page DNA
+===
+
+What is next?
+===
