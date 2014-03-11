@@ -39,31 +39,73 @@ In the perl directory you will find [diskmap.pl](https://github.com/alexmac131/m
 The next aspect is to take the file data and parse it into something useful where all have is a downloaded file formated by nothing more than a social convention.  Extracting data such as the year it was publish, the series  information etcand in additon filter out all the "graffti" tags uploaders add.
 
 
-The Data
+The [Data](https://github.com/alexmac131/mediaData/blob/master/data/master.json)
 ===
 	
 	sample:
 
-	  {
-      "extension" : "mkv",
+	{
+      "extension" : "avi",
       "status" : "good",
-      "espisode" : null,
-      "size" : "3519541115",
-      "series" : "1956",
+      "espisode" : "",
+      "size" : "1312522240",
+      "series" : "",
       "datapoints" : [
          "videos",
          "movies",
-         "Invasion.of.the.Body.Snatchers.1956.720p.BluRay.X264-AMIABLE [PublicHD]",
-         "Invasion.of.the.Body.Snatchers.1956.720p.BluRay.X264-AMIABLE.mkv"
+         "127.Hours.2010.DVDSCR.AC3.XViD-T0XiC-iNK",
+         "127.Hours.2010.DVDSCR.AC3.XViD-T0XiC-iNK.avi"
       ],
-      "drive" : "/netdrives/drivecd/d/",
-      "filename" : "invasion_of_the_body_snatchers_1956_720p_bluray_x264_amiable_mkv",
-      "nasdrive" : "movie2 volume 2",
+      "drive" : "/netdrives/driveab/a/",
+      "filename" : "127 Hours 2010",
+      "nasdrive" : "movie1 volume 2",
       "mediaType" : "movie",
-      "id" : 54,
-      "season" : "1956",
-      "raw" : "/netdrives/drivecd/d/videos/movies/Invasion.of.the.Body.Snatchers.1956.720p.BluRay.X264-AMIABLE [PublicHD]/Invasion.of.the.Body.Snatchers.1956.720p.BluRay.X264-AMIABLE.mkv",
-      "year" : "1956"
-    },
+      "id" : 1,
+      "season" : "",
+      "raw" : "/netdrives/driveab/a/videos/movies/127.Hours.2010.DVDSCR.AC3.XViD-T0XiC-iNK/127.Hours.2010.DVDSCR.AC3.XViD-T0XiC-iNK.avi",
+      "year" : "2010"
+   },
 
+   ...
+
+    {
+      "extension" : "mp4",
+      "status" : "good",
+      "espisode" : "",
+      "size" : "1474601406",
+      "series" : "",
+      "datapoints" : [
+         "videos",
+         "movies",
+         "20000.Leagues.Under.the.Sea.1954.DVDRip.H264.AAC.5.1ch.Gopo",
+         "20000.Leagues.Under.the.Sea.1954.DVDRip.H264.AAC.5.1ch.Gopo.mp4"
+      ],
+      "drive" : "/netdrives/driveab/a/",
+      "filename" : "20000 Leagues Under the Sea 1954",
+      "nasdrive" : "movie1 volume 2",
+      "mediaType" : "movie",
+      "id" : 3,
+      "season" : "",
+      "raw" : "/netdrives/driveab/a/videos/movies/20000.Leagues.Under.the.Sea.1954.DVDRip.H264.AAC.5.1ch.Gopo/20000.Leagues.Under.the.Sea.1954.DVDRip.H264.AAC.5.1ch.Gopo.mp4",
+      "year" : "2000"
+   },
+
+   Loading into JavaScript
+   ====
+
+   I use a simple method, I write the perl output as a JSON file (see above) and then load it directly via '<script src="data/master.json"></script>'.  The trick I did not show above is I write the file as javascript.
+
+        'var masterMovie = [ {}, {}, {} ];' The { } contain the elements as above.
+
+   So we don't really wish to search all the properties just the names and keep the id to do a more detailed lookup later.
+
+      var master;
+      for (var i = 0; i < masterMovie.length; i++){ 
+         master =  masterMovie[i].id;     
+         $.data( document.body,String(master),masterMovie[i]);
+         dataset.push( { "id" :masterMovie[i].id , "label" : masterMovie[i].filename
+         });     
+      }
+    
+    The variable *dataset* is then used for the regular expression, sorting, etc.
 
