@@ -112,8 +112,11 @@ Loading into JavaScript
 The Regex
 ===
 
-Building the output - cloning  / rendering / page DNA
+Building the output 
 ===
+-cloning 
+-rendering 
+-DNA
 
 What is next?
 ===
