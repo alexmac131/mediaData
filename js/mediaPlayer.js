@@ -60,6 +60,7 @@ $(function() {
 
 $.widget( "custom.catcomplete", $.ui.autocomplete, {
  	_renderMenu: function( ul, items ) {
+ 		console.log("rendering menu" + $.now());
 		$("#showlist").empty();	
 		//items.sort(compare);	
 		var clonedList = $("#showlist").clone();
@@ -94,7 +95,11 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
 			count++;
 		});
 		$("#showlist").append(clonedList);
-	    $("#showList").show();
+		console.log(clonedList);
+		console.log("show list " + $.now() + "  " + count + "\n\n\n");
+		$("#showlist").show().children().show();
+		$("#showlist").show().children().show();
+    	
     }
 });
 
@@ -104,10 +109,10 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
 	    source: dataset,
 
 	   	response: function( event, ui ) {
-	   		if (ui.content.length == 0) {
+	   		if (ui.content.length < minSet) {
 				$("#showlist").empty().hide();		
 			}
-			$("#match").text(ui.content.length).show();
+			$("#match").text(ui.content.length).show().children().show();;
 			// when we search and have a subset they are all possible next matches so 
 			// why search all 10,000 when we only need to search say 76.
 		    //console.log("reduce data");
@@ -121,21 +126,21 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
 	 	//console.log("key " + key);
 	 	if( key == 8 ) {
 	 		// when we hit the back key we need to refresh to the orginal data source.
-	 		//console.log("rebuild data");
+	 		console.log("rebuild data " +  $.now());
 	 		
 	 		$( "#search" ).catcomplete("option","source",dataset);
-	        if (($("#search").val().length) <= 1) {			
+	        if (($("#search").val().length) <= minSet) {			
 				$("#showlist").empty().hide();
 				$("#match").hide();
 			}
 			else {
 				$("#match").show();
-				$("#showlist").show();
+				$("#showlist").show().children().show();
 			}
 		}
 	});
 
-	$("#button"). click( function() {
+	$("#button").click( function() {
 	 	var key = event.keyCode || event.charCode;
 	 	console.log (key);
     });
