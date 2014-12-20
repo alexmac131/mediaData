@@ -157,7 +157,7 @@ $.widget( "custom.catcomplete", $.ui.autocomplete, {
 
 
 	$("#preferences").click(function(){
-		messageNote(1,"informaiton data ", "/mediaPlayer/preference.html");
+		messageNote(1,"informaiton data ", "/mediaData/preference.html");
 		$("#accepted").focus();
 
 	});
